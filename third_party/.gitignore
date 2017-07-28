@@ -1,5 +1,7 @@
 *.pc
 config.log*
+*.so
+*.so.*
 
 .deps
 .libs
@@ -38,6 +40,21 @@ freetype-*/objs/.libs/
 freetype-*/objs/apinames
 freetype-*/objs/ftexport.sym
 freetype-*/objs/libfreetype.la
+ldns-*/Makefile
+ldns-*/config.h
+ldns-*/config.status
+ldns-*/doc/ldns_manpages
+ldns-*/doc/man/
+ldns-*/include/
+ldns-*/ldns/common.h
+ldns-*/ldns/config.h
+ldns-*/ldns/net.h
+ldns-*/ldns/util.h
+ldns-*/lib
+ldns-*/libldns.la
+ldns-*/libtool
+ldns-*/linktest
+ldns-*/packaging/ldns-config
 libjpeg-turbo-*/Makefile
 libjpeg-turbo-*/cjpeg
 libjpeg-turbo-*/config.h
@@ -305,6 +322,9 @@ openssl-*/crypto/ui/lib
 openssl-*/crypto/whrlpool/lib
 openssl-*/crypto/x509/lib
 openssl-*/crypto/x509v3/lib
+openssl-*/crypto/engine/lib
+openssl-*/engines/ccgost/lib
+openssl-*/engines/lib
 openssl-*/libcrypto.a
 openssl-*/libcrypto.so
 openssl-*/libssl.a
