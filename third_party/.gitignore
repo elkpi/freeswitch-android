@@ -2,6 +2,7 @@
 config.log*
 *.so
 *.so.*
+*.a
 
 .deps
 .libs
@@ -129,6 +130,7 @@ libpng-*/powerpc/.dirstamp
 libpng-*/scripts/vers.out
 libpng-*/stamp-h1
 libpng-*/timepng
+libpng-*/test-driver
 libuuid-*/Makefile
 libuuid-*/config.h
 libuuid-*/config.status
