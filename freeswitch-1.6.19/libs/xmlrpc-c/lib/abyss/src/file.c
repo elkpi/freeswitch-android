@@ -112,7 +112,11 @@ createFileImage(TFile **     const filePP,
 
         if (createFile)
             /* Unix prefers S_IWUSR, but some Windows knows only S_IWRITE */
+#ifndef __ANDROID__
             rc = open(name, attrib | O_CREAT, S_IWRITE | S_IREAD);
+#else
+            rc = open(name, attrib | O_CREAT, S_IWUSR | S_IRUSR);
+#endif
         else
             rc = open(name, attrib);
 

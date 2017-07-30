@@ -720,13 +720,21 @@ ssize_t ws_close(wsh_t *wsh, int16_t reason)
 uint64_t hton64(uint64_t val)
 {
 	if (__BYTE_ORDER == __BIG_ENDIAN) return (val);
+#ifndef __ANDROID__
 	else return __bswap_64(val);
+#else
+	else return betoh64(val);
+#endif
 }
 
 uint64_t ntoh64(uint64_t val)
 {
 	if (__BYTE_ORDER == __BIG_ENDIAN) return (val);
+#ifndef __ANDROID__
 	else return __bswap_64(val);
+#else
+	else return betoh64(val);
+#endif
 }
 
 

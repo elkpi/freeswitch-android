@@ -4065,7 +4065,11 @@ static int start_jsock(verto_profile_t *profile, ws_socket_t sock, int family)
 	int flag = 1;
 	int i;
 #ifndef WIN32
+#ifndef __ANDROID__
     unsigned int len;
+#else
+    socklen_t len;
+#endif
 #else
     int len;
 #endif

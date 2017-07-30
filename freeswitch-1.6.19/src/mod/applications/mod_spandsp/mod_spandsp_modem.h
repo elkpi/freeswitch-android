@@ -58,7 +58,11 @@
 #include <termios.h>
 #elif defined(__OpenBSD__)
 #else
+#ifdef __ANDROID__
+#include "pty.h"
+#else
 #include <pty.h>
+#endif
 #endif
 #include <unistd.h>
 #endif

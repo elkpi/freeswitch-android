@@ -595,7 +595,11 @@ SCGI_DECLARE(scgi_status_t) scgi_accept(scgi_socket_t server_sock, scgi_socket_t
 #ifdef WIN32
 	int clntLen;
 #else
+#ifdef __ANDROID__
+	socklen_t clntLen;
+#else
 	unsigned int clntLen;
+#endif
 #endif
 	
 	if (!echoClntAddr) {
