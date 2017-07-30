@@ -35,6 +35,9 @@ typedef unsigned __int16 uint16_t;
 #define in_addr_t uint32_t
 #include "declspec.h"
 #else
+#if defined(__ANDROID__)
+#include <arpa/inet.h>
+#endif
 #define LIBSPEC
 #include <netinet/in.h>
 #endif

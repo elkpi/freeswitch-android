@@ -59,8 +59,12 @@
 #ifndef WIN32
 #include <sys/wait.h>
 #include <switch_private.h>
+#ifndef __ANDROID__
 #include <glob.h>
-#else /* we're on windoze :( */
+#endif
+#endif
+
+#if (defined(WIN32) || defined(__ANDROID__))
 /* glob functions at end of this file */
 #include <apr_file_io.h>
 
@@ -3201,7 +3205,7 @@ done:
 	return status;
 }
 
-#ifdef WIN32
+#if (defined(WIN32) || defined(__ANDROID__))
 /*
  * globbing functions for windows, part of libc on unix, this code was cut and paste from
  * freebsd lib and distilled a bit to work with windows
@@ -3284,8 +3288,10 @@ static int glob3(char *, char *, char *, char *, char *, glob_t *, size_t *);
 static int globextend(const char *, glob_t *, size_t *);
 static int match(char *, char *, char *);
 
+#ifndef __ANDROID__
 #pragma warning(push)
 #pragma warning(disable:4310)
+#endif
 
 int glob(const char *pattern, int flags, int (*errfunc) (const char *, int), glob_t *pglob)
 {
@@ -3442,8 +3448,11 @@ static int glob2(char *pathbuf, char *pathend, char *pathend_last, char *pattern
 			*pathend = EOS;
 			if (stat(pathbuf, &sb))
 				return (0);
-
+#ifdef __ANDROID__
+			if (((pglob->gl_flags & GLOB_MARK) && pathend[-1] != SEP && pathend[-1] != WIN_SEP) && (S_IFDIR & sb.st_mode)) {
+#else
 			if (((pglob->gl_flags & GLOB_MARK) && pathend[-1] != SEP && pathend[-1] != WIN_SEP) && (_S_IFDIR & sb.st_mode)) {
+#endif
 				if (pathend + 1 > pathend_last)
 					return (GLOB_ABORTED);
 				*pathend++ = WIN_SEP;
@@ -3656,7 +3665,9 @@ void globfree(glob_t *pglob)
 	}
 }
 
+#ifndef __ANDROID__
 #pragma warning(pop)
+#endif
 #endif
 
 /* For Emacs:

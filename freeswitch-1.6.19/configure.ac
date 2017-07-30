@@ -257,7 +257,7 @@ AX_COMPILER_VENDOR
 if test "x${cross_compiling}" = "xyes"; then
     CC_FOR_BUILD=${CC_FOR_BUILD-gcc}
     case "$host" in
-    	 arm*-linux-gnueabi*|arm*-*-linux-gnueabi*)
+    	 arm*-linux-gnueabi*|arm*-*-linux-gnueabi*|arm*-linux-androideabi*)
 		# spandsp modem
 		ac_cv_file__dev_ptmx=yes
 		# libjs
@@ -806,6 +806,9 @@ case "$host" in
         APR_ADDTO(LDFLAGS, -L/usr/local/lib)
         APR_ADDTO(SWITCH_AM_CFLAGS, -I/usr/local/include)
 	APR_ADDTO([PLATFORM_CORE_LIBS], [-lcrypt -lrt])
+    ;;
+    *android*)
+	APR_ADDTO([PLATFORM_CORE_LIBS], [-ldl])
     ;;
     *linux*)
 	APR_ADDTO([PLATFORM_CORE_LIBS], [-ldl -lcrypt -lrt])

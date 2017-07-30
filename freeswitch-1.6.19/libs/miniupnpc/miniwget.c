@@ -31,7 +31,7 @@
 #include <fcntl.h>
 #define closesocket close
 #endif
-#if defined(__sun) || defined(sun)
+#if defined(__sun) || defined(sun) || defined(__ANDROID__)
 #define MIN(x,y) (((x)<(y))?(x):(y))
 #endif
 

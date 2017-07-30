@@ -23,6 +23,8 @@ typedef unsigned __int32 uint32_t;
 #include <stdint.h>
 #endif
 #define in_addr_t uint32_t
+#elif defined(__ANDROID__)
+#include <arpa/inet.h>
 #endif
 #include "declspec.h"
 

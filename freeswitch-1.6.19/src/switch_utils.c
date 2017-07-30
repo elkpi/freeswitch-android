@@ -1677,6 +1677,8 @@ SWITCH_DECLARE(switch_status_t) switch_find_local_ip(char *buf, int len, int *ma
 #else
 #ifdef __Darwin__
 	int ilen;
+#elif defined(__ANDROID__)
+	socklen_t ilen;
 #else
 	unsigned int ilen;
 #endif

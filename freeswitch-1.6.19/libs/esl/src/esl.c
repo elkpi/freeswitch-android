@@ -718,6 +718,8 @@ ESL_DECLARE(esl_status_t) esl_listen(const char *host, esl_port_t port, esl_list
 		struct sockaddr_in echoClntAddr;
 #ifdef WIN32
 		int clntLen;
+#elif defined(__ANDROID__)
+		socklen_t clntLen;
 #else
 		unsigned int clntLen;
 #endif
@@ -775,6 +777,8 @@ ESL_DECLARE(esl_status_t) esl_listen_threaded(const char *host, esl_port_t port,
 		struct sockaddr_in echoClntAddr;
 #ifdef WIN32
 		int clntLen;
+#elif defined(__ANDROID__)
+		socklen_t clntLen;
 #else
 		unsigned int clntLen;
 #endif
