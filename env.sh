@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NDK=/home/ping/android-ndk-r10e
+#NDK=/home/ping/android-ndk-r10e
 
 ANDROID_VERSION=19
 NDK_PATH=$NDK
